@@ -83,10 +83,15 @@
         <url>git@github.com:motown-io/motown.git</url>
     </scm>
     <dependencies>
-        <dependency>
+    	<dependency>
+            <groupId>io.motown.domain</groupId>
+            <artifactId>domain-utils</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!--dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-        </dependency>
+        </dependency-->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>

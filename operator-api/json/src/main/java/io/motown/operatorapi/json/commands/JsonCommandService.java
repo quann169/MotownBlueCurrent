@@ -15,10 +15,10 @@
  */
 package io.motown.operatorapi.json.commands;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
+import io.motown.domain.utils.gson.Gson;
+import io.motown.domain.utils.gson.JsonArray;
+import io.motown.domain.utils.gson.JsonObject;
+import io.motown.domain.utils.gson.JsonParseException;
 import io.motown.domain.api.security.IdentityContext;
 import io.motown.domain.api.security.TypeBasedAddOnIdentity;
 import io.motown.domain.api.security.UserIdentity;

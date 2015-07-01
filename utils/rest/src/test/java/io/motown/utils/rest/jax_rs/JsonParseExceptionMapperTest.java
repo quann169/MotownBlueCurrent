@@ -15,7 +15,7 @@
  */
 package io.motown.utils.rest.jax_rs;
 
-import com.google.gson.JsonParseException;
+import io.motown.domain.utils.gson.JsonParseException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;

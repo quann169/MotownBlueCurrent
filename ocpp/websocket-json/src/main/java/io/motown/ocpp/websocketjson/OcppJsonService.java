@@ -16,7 +16,7 @@
 package io.motown.ocpp.websocketjson;
 
 import com.google.common.collect.Lists;
-import com.google.gson.Gson;
+import io.motown.domain.utils.gson.Gson;
 import io.motown.domain.api.chargingstation.*;
 import io.motown.domain.api.security.AddOnIdentity;
 import io.motown.domain.api.security.TypeBasedAddOnIdentity;

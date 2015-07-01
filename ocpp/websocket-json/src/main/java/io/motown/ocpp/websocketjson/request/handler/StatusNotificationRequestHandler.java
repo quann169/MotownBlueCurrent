@@ -15,7 +15,7 @@
  */
 package io.motown.ocpp.websocketjson.request.handler;
 
-import com.google.gson.Gson;
+import io.motown.domain.utils.gson.Gson;
 import io.motown.domain.api.chargingstation.ChargingStationId;
 import io.motown.domain.api.chargingstation.ComponentStatus;
 import io.motown.domain.api.chargingstation.EvseId;

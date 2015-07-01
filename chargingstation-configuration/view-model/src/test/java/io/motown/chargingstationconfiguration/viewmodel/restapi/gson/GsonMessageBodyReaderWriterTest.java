@@ -15,8 +15,8 @@
  */
 package io.motown.chargingstationconfiguration.viewmodel.restapi.gson;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonParseException;
+import io.motown.domain.utils.gson.Gson;
+import io.motown.domain.utils.gson.JsonParseException;
 import org.junit.Test;
 
 import javax.ws.rs.core.MediaType;

@@ -15,8 +15,8 @@
  */
 package io.motown.ocpp.websocketjson.gson.deserializer;
 
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonElement;
+import io.motown.domain.utils.gson.JsonDeserializationContext;
+import io.motown.domain.utils.gson.JsonElement;
 import io.motown.ocpp.websocketjson.schema.generated.v15.ChangeavailabilityResponse;
 
 import java.lang.reflect.Type;

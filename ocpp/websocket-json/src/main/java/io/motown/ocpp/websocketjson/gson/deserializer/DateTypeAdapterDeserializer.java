@@ -15,9 +15,14 @@
  */
 package io.motown.ocpp.websocketjson.gson.deserializer;
 
-import com.google.gson.*;
+import io.motown.domain.utils.gson.JsonDeserializationContext;
+import io.motown.domain.utils.gson.JsonElement;
+import io.motown.domain.utils.gson.JsonParseException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import io.motown.domain.utils.gson.*;
 
 import java.lang.reflect.Type;
 import java.text.DateFormat;

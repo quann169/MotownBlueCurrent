@@ -15,8 +15,8 @@
  */
 package io.motown.utils.rest.json.gson;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import io.motown.domain.utils.gson.Gson;
+import io.motown.domain.utils.gson.GsonBuilder;
 
 import java.util.Set;
 

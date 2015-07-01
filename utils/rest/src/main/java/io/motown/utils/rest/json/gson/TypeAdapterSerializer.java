@@ -15,7 +15,7 @@
  */
 package io.motown.utils.rest.json.gson;
 
-import com.google.gson.JsonSerializer;
+import io.motown.domain.utils.gson.JsonSerializer;
 
 public interface TypeAdapterSerializer<T> extends JsonSerializer<T> {
 

@@ -15,9 +15,11 @@
  */
 package io.motown.ocpp.websocketjson.request.handler;
 
-import com.google.gson.Gson;
+
 import io.motown.domain.api.chargingstation.ChargingStationId;
+import io.motown.domain.utils.gson.Gson;
 import io.motown.ocpp.websocketjson.wamp.WampMessage;
+
 import org.atmosphere.websocket.WebSocket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

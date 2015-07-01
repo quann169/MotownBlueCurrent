@@ -15,8 +15,8 @@
  */
 package io.motown.operatorapi.json.commands;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
+import io.motown.domain.utils.gson.JsonObject;
+import io.motown.domain.utils.gson.JsonSyntaxException;
 import io.motown.domain.api.chargingstation.ChargingStationId;
 import io.motown.domain.api.chargingstation.CorrelationToken;
 import io.motown.domain.api.chargingstation.RequestUnlockEvseCommand;

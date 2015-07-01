@@ -60,8 +60,19 @@ public class SecWebSocketVersionInterceptor implements Filter {
             String header = r.getHeader(SEC_WEB_SOCKET_PROTOCOL_HEADER);
 
             if(header != null && !header.isEmpty()) {
-                if(supportedProtocols.contains(header.toLowerCase())) {
-                    HttpServletResponse.class.cast(response).addHeader(SEC_WEB_SOCKET_PROTOCOL_HEADER, URLEncoder.encode(header, URL_ENCODER_ENCODING));
+            	String validProtocol = "";
+                String[] temp = header.toLowerCase().split(PROTOCOL_SEPARATOR);
+                for(String protocol:temp) {
+                	if(supportedProtocols.contains(protocol)) {
+                		if ("".equals(validProtocol)) {
+                			validProtocol = protocol;
+    					} else {
+    						validProtocol = "," + protocol;
+    					}
+                	}
+                }
+                if(!"".equals(validProtocol)) {
+                    HttpServletResponse.class.cast(response).addHeader(SEC_WEB_SOCKET_PROTOCOL_HEADER, URLEncoder.encode(validProtocol, URL_ENCODER_ENCODING));
                 } else {
                     LOG.warn("Invalid websocket protocol [{}] received.", header);
                     HttpServletResponse.class.cast(response).sendError(HttpServletResponse.SC_NOT_IMPLEMENTED, "Websocket protocol not supported");

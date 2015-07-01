@@ -15,7 +15,7 @@
  */
 package io.motown.operatorapi.json.gson;
 
-import com.google.gson.*;
+import io.motown.domain.utils.gson.*;
 import io.motown.domain.api.chargingstation.Address;
 import io.motown.utils.rest.json.gson.TypeAdapterDeserializer;
 

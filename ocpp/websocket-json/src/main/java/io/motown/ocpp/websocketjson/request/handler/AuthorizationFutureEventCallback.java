@@ -15,17 +15,21 @@
  */
 package io.motown.ocpp.websocketjson.request.handler;
 
-import com.google.gson.Gson;
 import io.motown.domain.api.chargingstation.AuthorizationResultEvent;
-import io.motown.ocpp.viewmodel.domain.AuthorizationResult;
+import io.motown.domain.api.chargingstation.AuthorizationResultStatus;
 import io.motown.domain.utils.axon.FutureEventCallback;
+import io.motown.domain.utils.gson.Gson;
+import io.motown.ocpp.viewmodel.domain.AuthorizationResult;
+import io.motown.ocpp.websocketjson.schema.generated.v15.AuthorizeResponse;
+import io.motown.ocpp.websocketjson.schema.generated.v15.IdTagInfo;
 import io.motown.ocpp.websocketjson.wamp.WampMessage;
+
+import java.io.IOException;
+
 import org.atmosphere.websocket.WebSocket;
 import org.axonframework.domain.EventMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
 
 public class AuthorizationFutureEventCallback extends FutureEventCallback<AuthorizationResult> {
 
@@ -45,31 +49,86 @@ public class AuthorizationFutureEventCallback extends FutureEventCallback<Author
 
     @Override
     public boolean onEvent(EventMessage<?> event) {
-        AuthorizationResultEvent resultEvent;
+//		AuthorizationResultEvent resultEvent;
+//
+//		if (event.getPayload() instanceof AuthorizationResultEvent) {
+//			resultEvent = (AuthorizationResultEvent) event.getPayload();
+//
+//			AuthorizationResult result = new AuthorizationResult(resultEvent
+//					.getIdentifyingToken().getToken(),
+//					resultEvent.getAuthenticationStatus());
+//
+//			this.setResult(result);
+//
+//			this.countDownLatch();
+//
+//			this.writeResult(result);
+//
+//			return true;
+//		} else {
+//			// not the right type of event... not 'handled'
+//			return false;
+//		}
+		
+    	AuthorizationResultEvent resultEvent;
 
-        if (event.getPayload() instanceof AuthorizationResultEvent) {
-            resultEvent = (AuthorizationResultEvent) event.getPayload();
-
-            AuthorizationResult result = new AuthorizationResult(resultEvent.getIdentifyingToken().getToken(), resultEvent.getAuthenticationStatus());
-
-            this.setResult(result);
-
-            this.countDownLatch();
-
-            this.writeResult(result);
-
-            return true;
-        } else {
+        if (!(event.getPayload() instanceof AuthorizationResultEvent)) {
             // not the right type of event... not 'handled'
             return false;
         }
+
+        resultEvent = (AuthorizationResultEvent) event.getPayload();
+
+        IdTagInfo idTagInfo = new IdTagInfo();
+        idTagInfo.setStatus(convert(resultEvent.getAuthenticationStatus()));
+        AuthorizeResponse response = new AuthorizeResponse();
+        response.setIdTagInfo(idTagInfo);
+        writeResult(response);
+
+        return true;
+		
     }
 
-    private void writeResult(AuthorizationResult result) {
+    public void writeResult(AuthorizeResponse result) {
         try {
-            webSocket.write(new WampMessage(WampMessage.CALL_RESULT, callId, result).toJson(gson));
+        	WampMessage mess = new WampMessage(WampMessage.CALL_RESULT, callId, result);
+        	String response = mess.toJson(gson);
+        	for (IdTagInfo.Status status : IdTagInfo.Status.values()) {
+        		response = response.replace(status.name(), status.toString());
+    		}
+            webSocket.write(response);
         } catch (IOException e) {
             LOG.error("IOException while writing to web socket.", e);
         }
+    }
+    
+    /**
+     * Converts a {@code AuthorizationResultStatus} to a {@code IdTagInfo.Status}. Throws an assertion error is the
+     * status is unknown.
+     *
+     * @param status status to convert.
+     * @return converted status.
+     */
+    private static IdTagInfo.Status convert(AuthorizationResultStatus status) {
+        IdTagInfo.Status result;
+
+        switch (status) {
+            case ACCEPTED:
+                result = IdTagInfo.Status.ACCEPTED;
+                break;
+            case BLOCKED:
+                result = IdTagInfo.Status.BLOCKED;
+                break;
+            case EXPIRED:
+                result = IdTagInfo.Status.EXPIRED;
+                break;
+            case INVALID:
+                result = IdTagInfo.Status.INVALID;
+                break;
+            default:
+                throw new AssertionError("AuthorizationResultStatus has unknown status: " + status);
+        }
+
+        return result;
     }
 }

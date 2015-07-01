@@ -15,7 +15,7 @@
  */
 package io.motown.operatorapi.json.gson;
 
-import com.google.gson.GsonBuilder;
+import io.motown.domain.utils.gson.GsonBuilder;
 import io.motown.operatorapi.json.gson.GsonMessageBodyWriter;
 import org.junit.Before;
 import org.junit.Test;

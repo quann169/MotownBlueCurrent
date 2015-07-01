@@ -15,7 +15,7 @@
  */
 package io.motown.operatorapi.json.gson;
 
-import com.google.gson.*;
+import io.motown.domain.utils.gson.*;
 import io.motown.utils.rest.json.gson.TypeAdapterSerializer;
 
 import java.lang.reflect.Type;

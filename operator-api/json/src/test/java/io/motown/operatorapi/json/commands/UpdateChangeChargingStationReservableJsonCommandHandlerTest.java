@@ -15,8 +15,8 @@
  */
 package io.motown.operatorapi.json.commands;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import io.motown.domain.utils.gson.Gson;
+import io.motown.domain.utils.gson.JsonObject;
 import io.motown.domain.api.chargingstation.MakeChargingStationNotReservableCommand;
 import io.motown.domain.api.chargingstation.MakeChargingStationReservableCommand;
 import io.motown.operatorapi.json.exceptions.UserIdentityUnauthorizedException;

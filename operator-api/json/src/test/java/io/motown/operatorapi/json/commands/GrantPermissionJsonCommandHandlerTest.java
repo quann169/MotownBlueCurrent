@@ -15,8 +15,8 @@
  */
 package io.motown.operatorapi.json.commands;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import io.motown.domain.utils.gson.Gson;
+import io.motown.domain.utils.gson.JsonObject;
 import io.motown.domain.api.chargingstation.ChargingStationId;
 import io.motown.domain.api.chargingstation.CreateChargingStationCommand;
 import io.motown.domain.api.chargingstation.GrantPermissionCommand;

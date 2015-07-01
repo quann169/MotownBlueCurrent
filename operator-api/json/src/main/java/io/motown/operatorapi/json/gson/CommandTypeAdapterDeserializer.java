@@ -15,9 +15,9 @@
  */
 package io.motown.operatorapi.json.gson;
 
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import io.motown.domain.utils.gson.JsonDeserializationContext;
+import io.motown.domain.utils.gson.JsonElement;
+import io.motown.domain.utils.gson.JsonObject;
 import io.motown.utils.rest.json.gson.TypeAdapterDeserializer;
 
 import java.lang.reflect.Type;

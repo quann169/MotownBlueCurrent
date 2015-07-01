@@ -15,7 +15,7 @@
  */
 package io.motown.utils.rest.json.gson;
 
-import com.google.gson.JsonDeserializer;
+import io.motown.domain.utils.gson.JsonDeserializer;
 
 public interface TypeAdapterDeserializer<T> extends JsonDeserializer<T> {
 

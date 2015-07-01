@@ -140,8 +140,9 @@ public class DomainService {
         this.checkChargingStationExistsAndIsRegisteredAndConfigured(chargingStationId);
 
         IdentityContext identityContext = new IdentityContext(addOnIdentity, new NullUserIdentity());
+        AuthorizeCommand auCmd = new AuthorizeCommand(chargingStationId, new TextualToken(idTag), identityContext);
 
-        eventWaitingGateway.sendAndWaitForEvent(new AuthorizeCommand(chargingStationId, new TextualToken(idTag), identityContext), future, authorizationTimeoutInMillis);
+        eventWaitingGateway.sendAndWaitForEvent(auCmd, future, authorizationTimeoutInMillis);
     }
 
     public void receiveConfigurationItems(ChargingStationId chargingStationId, Set<ConfigurationItem> configurationItems, AddOnIdentity addOnIdentity) {

@@ -15,7 +15,7 @@
  */
 package io.motown.utils.rest.jax_rs;
 
-import com.google.gson.JsonParseException;
+import io.motown.domain.utils.gson.JsonParseException;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;

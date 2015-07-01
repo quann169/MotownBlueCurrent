@@ -16,7 +16,7 @@
 package io.motown.ocpp.websocketjson.response.handler;
 
 import com.google.common.collect.ImmutableSet;
-import com.google.gson.Gson;
+import io.motown.domain.utils.gson.Gson;
 import io.motown.domain.api.chargingstation.ChargingStationId;
 import io.motown.domain.api.chargingstation.ConfigurationItem;
 import io.motown.domain.api.chargingstation.CorrelationToken;

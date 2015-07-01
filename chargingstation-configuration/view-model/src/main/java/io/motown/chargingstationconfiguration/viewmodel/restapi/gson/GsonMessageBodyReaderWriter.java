@@ -15,10 +15,10 @@
  */
 package io.motown.chargingstationconfiguration.viewmodel.restapi.gson;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import io.motown.domain.utils.gson.Gson;
+import io.motown.domain.utils.gson.GsonBuilder;
+import io.motown.domain.utils.gson.stream.JsonReader;
+import io.motown.domain.utils.gson.stream.JsonWriter;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
