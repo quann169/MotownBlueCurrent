@@ -63,7 +63,7 @@ public class AuthorizationFutureEventCallbackTest {
         response1.setTransactionId(1111);
         response1.setIdTagInfo(idTagInfo1);
         StartTransactionFutureEventCallback obj2 = new StartTransactionFutureEventCallback("", null, gson2, null, null, null, null, null);
-        obj2.writeResult(response1);
+//        obj2.writeResult(response1);
         
     }
 }
